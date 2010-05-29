@@ -14,7 +14,7 @@ void quit(Gtk::Main *kit)
 
 int main(int argc , char *argv[])
 {
-	std::cout << "widget test: WaveView dialog" << std::endl;
+	std::cout << "widget test: Modular Canvas" << std::endl;
 	Gtk::Main kit (argc,argv);
 	Gtk::Window window;
 	Gtk::Button button("Quit");
@@ -29,7 +29,6 @@ int main(int argc , char *argv[])
 	
 	window.add(hbox);
 	window.show_all();
-	jackLabel.redraw();
 	kit.run(window);
 	
 	return 0;

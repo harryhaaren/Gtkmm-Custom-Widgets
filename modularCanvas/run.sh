@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd ./build/default
+cd build/default
 ./main

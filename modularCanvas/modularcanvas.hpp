@@ -22,6 +22,8 @@ class ModularCanvas : public Gtk::DrawingArea
 		//bool on_button_press_event(GdkEventButton* event);
 		bool on_expose_event(GdkEventExpose* event);
 		bool onScrollEvent(GdkEventScroll *event);
+		bool onMouseMove (GdkEventMotion *event);
+		bool onMouseClick (GdkEventButton *event);
 };
 
 #endif // ModularCanvas
