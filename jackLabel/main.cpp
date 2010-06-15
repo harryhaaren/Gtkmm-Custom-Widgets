@@ -14,7 +14,7 @@ void quit(Gtk::Main *kit)
 
 int main(int argc , char *argv[])
 {
-	std::cout << "widget test: WaveView dialog" << std::endl;
+	std::cout << "widget test: JackLabel" << std::endl;
 	Gtk::Main kit (argc,argv);
 	Gtk::Window window;
 	Gtk::Button button("Quit");

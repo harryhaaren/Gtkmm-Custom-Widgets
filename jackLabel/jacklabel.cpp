@@ -1,10 +1,6 @@
+
 #include "jacklabel.hpp"
-#include <iostream>
 
-#include <gtkmm.h>
-
-#include <cairomm/context.h>
-#include <sstream>
 
 JackLabel::JackLabel()
 {
@@ -13,6 +9,8 @@ JackLabel::JackLabel()
 	
 	// set default widget size
 	set_size_request(120,80);
+	
+	xruns = false;
 	
 	bar = 20;
 	beat = 2;
@@ -25,12 +23,16 @@ JackLabel::~JackLabel()
 
 void JackLabel::setBBT(long inBar,int inBeat,int inTick )
 {
-	std::cout << "JackLabel::setBBT("<<inBar<<inBeat<<inTick<<");"<<std::endl;
+	std::cout << "JackLabel::setBBT("<<inBar<<" "<<inBeat<<" "<<inTick<<");"<<std::endl;
+	bar  = inBar;
+	beat = inBeat;
+	tick = inTick;
 }
 
-void JackLabel::setXruns()
+void JackLabel::setXruns(bool inXruns)
 {
 	std::cout << "XRUNS!!!!" << std::endl;
+	xruns = inXruns;
 }
 
 bool JackLabel::on_expose_event(GdkEventExpose* event)
@@ -54,7 +56,14 @@ bool JackLabel::on_expose_event(GdkEventExpose* event)
 			// clip to the area indicated by the expose event so that we only redraw
 			// the portion of the window that needs to be redrawn
 			cr->rectangle(event->area.x, event->area.y,event->area.width, event->area.height);
-			cr->set_source_rgb(0.1,0.1,0.1);
+			
+			if (xruns)
+				cr->set_source_rgb(0.5,0.0,0.0);	// red
+			else
+				cr->set_source_rgb(0.1,0.1,0.1);	// black
+			
+			
+			// fill the area, and clip to that area
 			cr->fill_preserve();
 			cr->clip();
 			
