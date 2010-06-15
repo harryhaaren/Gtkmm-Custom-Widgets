@@ -1,0 +1,17 @@
+			GTKMM CUSTOM WIDGETS
+
+This repo reflects my learing of Gtkmm custom widget drawing.
+Most of the code is pretty ok i think, its not "100% PC" some of the time.
+
+I have'nt optimized the loops or done any fancy tricks, as its kinda
+my sandbox for learning. Hope its of use to yee.
+
+To Use, Open a terminal in the folder you want and then:
+./waf configure
+./waf
+./run.sh
+
+Note: For the WaveView loadFile version, you NEED to copy the foo.flac
+file into the build/default dir. Otherwise it wont show anything.
+
+Cheers, -Harry (harryhaaren@gmail.com)
