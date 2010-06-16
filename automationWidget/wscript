@@ -1,0 +1,39 @@
+#!/usr/bin/python
+
+VERSION='0.0.1'
+APPNAME='test'
+srcdir = './'
+blddir = 'build'
+
+def set_options(opt):
+	opt.tool_options('compiler_cxx')
+
+def init():
+	print '\nInitializing CustomGtkmmWidgetArea build...'
+
+def configure(conf):
+	print 'Configuring the build enviroment...'
+	conf.check_tool	('compiler_cxx')
+	
+	conf.check_cfg	(package='gtkmm-2.4',args='--cflags --libs',uselib_store='GTKMM')
+
+def build(bld):
+	print '\nBuilding the sources to objects...'
+	
+	waveview = bld.new_task_gen(
+		features	= 'cxx cstaticlib',
+		source		= 'automationwidget.cpp',
+		uselib		= 'GTKMM',
+		target		= 'autowid' )
+	
+	main = bld.new_task_gen(
+		features	= 'cxx cprogram',
+		source		= 'main.cpp',
+		uselib_local= 'autowid',
+		uselib		= 'GTKMM',
+		target		= 'main')
+	
+
+
+def shutdown():
+	print('')
